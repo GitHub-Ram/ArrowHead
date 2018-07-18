@@ -57,7 +57,7 @@
     <FrameLayout
         android:id="@+id/frame"
         android:layout_width="match_parent"
-        android:background="#A0000000"
+        android:background="@android:color/transparent"
         android:clickable="true"
         android:layout_height="match_parent"/>
 </RelativeLayout>

@@ -5,6 +5,7 @@ import android.graphics.Rect;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -16,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     ConstraintLayout CL;
     Button one,two;
-    TextView tv;
+    TextView tv,tv1;
     RelativeLayout rl;
     FrameLayout frame;
     @Override
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         CL= findViewById(R.id.mainLayout);
         tv = findViewById(R.id.textView3);
+        tv1 = findViewById(R.id.textView3);
         one = findViewById(R.id.button);
         two = findViewById(R.id.button2);
         frame = findViewById(R.id.frame);
@@ -58,12 +60,15 @@ public class MainActivity extends AppCompatActivity {
         int width = tv.getWidth();
         int width1 = tv.getMeasuredWidth();
 
-        View ButtonView = new View(this);
-        LinearLayout.LayoutParams paramRl = new LinearLayout.LayoutParams(width,height);
-        paramRl.leftMargin = rect1[0];
-        paramRl.topMargin = rect1[1]-240;
+        View viewCopy = LayoutInflater.from(this).inflate(R.layout.activity_main, null);
+        frame.addView(viewCopy);
+
+        CustomOverlay ButtonView = new CustomOverlay(this,new Rect(rect1[0],rect1[1]-240,rect1[0]+width,rect1[1]-240+height));
+        RelativeLayout.LayoutParams paramRl = new RelativeLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT);
+        //paramRl.leftMargin = rect1[0];
+        //paramRl.topMargin = rect1[1]-240;
         ButtonView.setLayoutParams(paramRl);
-        ButtonView.setBackgroundResource(R.drawable.border);
+        //ButtonView.setBackgroundResource(R.drawable.border);
         frame.addView(ButtonView);
 
 

@@ -130,4 +130,6 @@ public class Custom extends View {
 //        points[1] = centerY + (int) (length * Math.sin(theta));
 //        return points;
 //    }
+
+
 }
